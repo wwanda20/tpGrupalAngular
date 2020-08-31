@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LibrosService } from '../libros.service';
+//import { LibrosService } from '../libros.service';
 import { GenerosService } from '../generos.service';
 
 @Component({
@@ -11,15 +11,16 @@ export class FormularioLibroComponent implements OnInit {
 
   @Output() hayUnNuevoLibro = new EventEmitter();
 
+  libro = {
+    name: '',
+    author: '',
+    lended:'',
+    gender: '',
+  };
+  
+  genero:any;
 
-  name= '';
-  author= '';
-  lended='';
-  gender= '';
-
-  genero:any [];
-
-  constructor(private librosService: LibrosService) { }
+ /*constructor(private librosService: LibrosService) { }
 
   ngOnInit(): void {
     
@@ -41,10 +42,8 @@ export class FormularioLibroComponent implements OnInit {
     respuesta = await this.librosService.guardarLibro(libro);
 
     this.hayUnNuevoLibro.emit();  //aviso que guarde el libro
-      
-  }
-
-  //prueba para generosService
+    */  
+   //prueba para generosService
   constructor(private generosService: GenerosService) { }
 
   ngOnInit(): void {
@@ -52,6 +51,11 @@ export class FormularioLibroComponent implements OnInit {
 
     console.log('generos',this.genero);
   }
+   guardar(){
+     console.log("Este libro voy a guardar", this.libro);
+   }
+  }
+
+  
 
 
-}
